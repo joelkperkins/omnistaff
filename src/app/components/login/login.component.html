@@ -1,0 +1,31 @@
+<div class="container-fluid my-5">
+    <mat-card class="row justify-content-center">
+        <form [formGroup]="loginForm">
+            <mat-card-content class="p-4">
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Email</mat-label>
+                            <input matInput formControlName="email">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Password</mat-label>
+                            <input matInput formControlName="pw">
+                        </mat-form-field>
+                    </div>
+                </div>
+            </mat-card-content>
+            <mat-card-actions>
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <button mat-raised-button color="primary" (click)="login()">Login</button>
+                    </div>
+                </div>
+            </mat-card-actions>
+        </form>
+    </mat-card>
+</div>

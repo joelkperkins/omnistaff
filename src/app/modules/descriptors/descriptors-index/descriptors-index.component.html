@@ -1,0 +1,18 @@
+<div class="row" *ngIf="descriptionType$ | async as type">
+    <ng-template [ngIf]="type === TONES">
+        <app-tones></app-tones>
+    </ng-template>
+    <ng-template [ngIf]="type === EMOTIONS">
+        <app-emotions></app-emotions>
+    </ng-template>
+    <ng-template [ngIf]="type === PERSONAS">
+        <app-personas></app-personas>
+    </ng-template>
+    <ng-template [ngIf]="type === GENRES">
+        <app-genres></app-genres>
+    </ng-template>
+    <ng-template [ngIf]="type === TOPICS">
+        <app-topics></app-topics>
+    </ng-template>
+    <app-active></app-active>
+</div>

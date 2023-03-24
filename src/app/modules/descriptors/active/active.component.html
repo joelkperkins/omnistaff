@@ -1,0 +1,14 @@
+<div class="d-flex justify-content-end align-items-center">
+    <mat-list>
+        <div *ngFor="let item of tonesByCategory">
+            <div mat-subheader>{{item.key}}</div>
+            <mat-list-item *ngFor="let data of item.data" class="d-flex align-items-center">
+              <div mat-line>{{data.name}}</div>
+              <button mat-icon-button (click)="setInactive(data)">
+                <mat-icon class="small" color="warn">backspace</mat-icon>
+              </button>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+        </div>
+    </mat-list>
+</div>

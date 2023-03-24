@@ -1,0 +1,35 @@
+<div class="container-fluid">
+    <div class="row">
+        <mat-form-field appearance="fill">
+            <mat-label>Tone Category</mat-label>
+            <mat-select [(value)]="category" (selectionChange)="changeTonesCategory($event)">
+              <mat-option *ngFor="let category of categories" [value]="category">
+                {{category}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="row">
+        <div cdkDropListGroup>
+            <div class="example-container">
+                <div
+                cdkDropList
+                [cdkDropListData]="tones"
+                class="example-list"
+                cdkDropListSortingDisabled
+                (cdkDropListDropped)="drop($event)">
+                    <div class="example-box" *ngFor="let tone of tones" cdkDrag (cdkDragDropped)="setActive(tone)">{{tone.name}}</div>
+            </div>
+        </div>
+            <div class="example-container">
+                <div
+                cdkDropList
+                [cdkDropListData]="activeTones"
+                class="example-list"
+                (cdkDropListDropped)="drop($event)">
+                    <div class="example-box" *ngFor="let tone of activeTones" cdkDrag (cdkDragDropped)="setInactive(tone)">{{tone.name}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
