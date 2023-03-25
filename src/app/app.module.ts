@@ -19,6 +19,10 @@ import { AuthState } from './state/auth/auth.state';
 import { DashboardState } from './state/dashboard/dashboard.state';
 import { TonesState } from './state/tones/tones.state';
 import { PromptState } from './state/prompt/prompt.state';
+import { EmotionsState } from './state/emotions/emotions.state';
+import { PersonasState } from './state/personas/personas.state';
+import { GenresState } from './state/genres/genres.state';
+import { TopicsState } from './state/topics/topics.state';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, HeaderComponent],
@@ -33,13 +37,25 @@ import { PromptState } from './state/prompt/prompt.state';
     FormsModule,
     ReactiveFormsModule,
     MatToolbarModule,
-    NgxsModule.forRoot([AuthState, DashboardState, TonesState, PromptState], {
-      developmentMode: true,
-      selectorOptions: {
-        suppressErrors: false,
-        injectContainerState: false,
-      },
-    }),
+    NgxsModule.forRoot(
+      [
+        AuthState,
+        DashboardState,
+        TonesState,
+        PromptState,
+        EmotionsState,
+        PersonasState,
+        GenresState,
+        TopicsState,
+      ],
+      {
+        developmentMode: true,
+        selectorOptions: {
+          suppressErrors: false,
+          injectContainerState: false,
+        },
+      }
+    ),
   ],
   providers: [],
   bootstrap: [AppComponent],

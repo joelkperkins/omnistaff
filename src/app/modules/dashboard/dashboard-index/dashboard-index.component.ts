@@ -7,9 +7,11 @@ import {
   DescriptionType,
 } from '../../../state/dashboard/dashboard.state';
 
-import { TonesModel } from '../../../models/tones/tones.model';
 import { TonesService } from '../../../models/tones/tones.service';
-import { TonesState } from '../../../state/tones/tones.state';
+import { EmotionsService } from '../../../models/emotions/emotions.service';
+import { PersonasService } from '../../../models/personas/personas.service';
+import { GenresService } from '../../../models/genres/genres.service';
+import { TopicsService } from '../../../models/topics/topics.service';
 
 @Component({
   selector: 'app-dashboard-index',
@@ -17,9 +19,20 @@ import { TonesState } from '../../../state/tones/tones.state';
   styleUrls: ['./dashboard-index.component.scss'],
 })
 export class DashboardIndexComponent implements OnInit {
-  constructor(private store: Store, private tones: TonesService) {}
+  constructor(
+    private store: Store,
+    private tones: TonesService,
+    private emotions: EmotionsService,
+    private personas: PersonasService,
+    private genres: GenresService,
+    private topics: TopicsService
+  ) {}
 
   ngOnInit(): void {
     this.tones.setTones();
+    this.emotions.setEmotions();
+    this.personas.setPersonas();
+    this.genres.setGenres();
+    this.topics.setTopics();
   }
 }

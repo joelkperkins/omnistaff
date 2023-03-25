@@ -1,1 +1,35 @@
-<p>emotions works!</p>
+<div class="container-fluid">
+    <div class="row">
+        <mat-form-field appearance="fill">
+            <mat-label>Emotion Category</mat-label>
+            <mat-select [(value)]="category" (selectionChange)="changeEmotionsCategory($event)">
+              <mat-option *ngFor="let category of categories" [value]="category">
+                {{category}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="row">
+        <div cdkDropListGroup>
+            <div class="example-container">
+                <div
+                cdkDropList
+                [cdkDropListData]="emotions"
+                class="example-list"
+                cdkDropListSortingDisabled
+                (cdkDropListDropped)="drop($event)">
+                    <div class="example-box" *ngFor="let emotion of emotions" cdkDrag (cdkDragDropped)="setActive(emotion)">{{emotion.name}}</div>
+            </div>
+        </div>
+            <div class="example-container">
+                <div
+                cdkDropList
+                [cdkDropListData]="activeEmotions"
+                class="example-list"
+                (cdkDropListDropped)="drop($event)">
+                    <div class="example-box" *ngFor="let emotion of activeEmotions" cdkDrag (cdkDragDropped)="setInactive(emotion)">{{emotion.name}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

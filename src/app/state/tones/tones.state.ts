@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { State, Action, StateContext, Store, Selector } from '@ngxs/store';
 import { TonesModel } from '../../models/tones/tones.model';
 import {
-  ChangeActiveTones,
   ChangeInactiveTones,
   ChangeActiveCategory,
   UpdateActiveTones,
@@ -55,16 +54,6 @@ export class TonesState {
   @Selector()
   static activeCategory(state: ITonesState): TonesCategory {
     return state.activeCategory;
-  }
-
-  @Action(ChangeActiveTones)
-  changeActiveTones(
-    ctx: StateContext<ITonesState>,
-    action: ChangeActiveTones
-  ): void {
-    ctx.patchState({
-      activeTones: action.tones,
-    });
   }
 
   @Action(ChangeInactiveTones)

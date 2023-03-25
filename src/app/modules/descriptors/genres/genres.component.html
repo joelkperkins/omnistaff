@@ -1,1 +1,28 @@
-<p>genres works!</p>
+<div class="container-fluid">
+    <div class="row">
+        <div cdkDropListGroup>
+            <div class="example-container">
+                <cdk-virtual-scroll-viewport itemSize="50" class="viewport">
+                    <div
+                        cdkDropList
+                        [cdkDropListData]="genres"
+                        class="example-list"
+                        cdkDropListSortingDisabled
+                        (cdkDropListDropped)="drop($event)"
+                    >
+                        <div class="example-box" *ngFor="let genre of genres" cdkDrag (cdkDragDropped)="setActive(genre)">{{genre.name}}</div>
+                    </div>
+                </cdk-virtual-scroll-viewport>
+            </div>
+            <div class="example-container">
+                <div
+                cdkDropList
+                [cdkDropListData]="activeGenres"
+                class="example-list"
+                (cdkDropListDropped)="drop($event)">
+                    <div class="example-box" *ngFor="let genre of activeGenres" cdkDrag (cdkDragDropped)="setInactive(genre)">{{genre.name}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

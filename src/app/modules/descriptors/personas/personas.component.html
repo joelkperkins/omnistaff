@@ -1,1 +1,35 @@
-<p>personas works!</p>
+<div class="container-fluid">
+    <div class="row">
+        <mat-form-field appearance="fill">
+            <mat-label>Persona Category</mat-label>
+            <mat-select [(value)]="category" (selectionChange)="changePersonaCategory($event)">
+              <mat-option *ngFor="let category of categories" [value]="category">
+                {{category}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="row">
+        <div cdkDropListGroup>
+            <div class="example-container">
+                <div
+                cdkDropList
+                [cdkDropListData]="personas"
+                class="example-list"
+                cdkDropListSortingDisabled
+                (cdkDropListDropped)="drop($event)">
+                    <div class="example-box" *ngFor="let persona of personas" cdkDrag (cdkDragDropped)="setActive(persona)">{{persona.name}}</div>
+            </div>
+        </div>
+            <div class="example-container">
+                <div
+                cdkDropList
+                [cdkDropListData]="activePersonas"
+                class="example-list"
+                (cdkDropListDropped)="drop($event)">
+                    <div class="example-box" *ngFor="let persona of activePersonas" cdkDrag (cdkDragDropped)="setInactive(persona)">{{persona.name}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

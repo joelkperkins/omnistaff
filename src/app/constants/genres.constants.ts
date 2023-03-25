@@ -1,0 +1,17 @@
+export const GENRES = [
+  { id: 1, name: 'News' },
+  { id: 2, name: 'Opinion/Editorial' },
+  { id: 3, name: 'Lifestyle/Fashion' },
+  { id: 4, name: 'Health/Fitness' },
+  { id: 5, name: 'Entertainment/Celebrity gossip' },
+  { id: 6, name: 'Technology/Science' },
+  { id: 7, name: 'Sports' },
+  { id: 8, name: 'Travel' },
+  { id: 9, name: 'Food/Cooking' },
+  { id: 10, name: 'Business/Finance' },
+  { id: 11, name: 'Education' },
+  { id: 12, name: 'Politics/Government' },
+  { id: 13, name: 'Automotive' },
+  { id: 14, name: 'Home/Garden' },
+  { id: 15, name: 'Pets/Animals' },
+];

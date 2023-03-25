@@ -31,14 +31,14 @@ interface IEmotionsState {
   providedIn: 'root',
 })
 @State<IEmotionsState>({
-  name: 'tones',
+  name: 'emotions',
   defaults: {
     activeEmotions: [],
     inactiveEmotions: [],
     activeCategory: EmotionsCategory.JOY,
   },
 })
-export class TonesState {
+export class EmotionsState {
   constructor(private store: Store) {}
 
   @Selector()
@@ -47,7 +47,7 @@ export class TonesState {
   }
 
   @Selector()
-  static inactiveTones(state: IEmotionsState): EmotionsModel[] {
+  static inactiveEmotions(state: IEmotionsState): EmotionsModel[] {
     return state.inactiveEmotions;
   }
 

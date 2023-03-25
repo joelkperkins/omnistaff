@@ -67,7 +67,7 @@ export const EMOTIONS = [
   {
     id: 14,
     name: 'Anger',
-    type: '',
+    type: 'Frustration',
   },
   {
     id: 15,

@@ -12,8 +12,6 @@ import { TonesModel } from '../../../models/tones/tones.model';
 import { TonesService } from '../../../models/tones/tones.service';
 import { TonesState, TonesCategory } from '../../../state/tones/tones.state';
 
-import { ChangeActiveCategory } from '../../../state/tones/tones.actions';
-
 @Component({
   selector: 'app-tones',
   templateUrl: './tones.component.html',
@@ -102,13 +100,11 @@ export class TonesComponent implements OnInit, OnDestroy {
         (tone) => tone.type === category
       );
     });
-    console.log(tonesByCategory);
     return tonesByCategory;
   }
 
   changeTonesCategory(category: any): void {
-    console.log(category);
-    this.store.dispatch(new ChangeActiveCategory(category.value));
+    this.tonesService.changeActiveCategory(category.value);
   }
 
   setActive(tone: TonesModel): void {

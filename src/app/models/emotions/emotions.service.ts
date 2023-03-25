@@ -5,8 +5,10 @@ import {
   UpdateActiveEmotions,
   UpdateInactiveEmotions,
   ChangeInactiveEmotions,
+  ChangeActiveCategory,
 } from '../../state/emotions/emotions.actions';
 import { EMOTIONS } from '../../constants/emotions.constants';
+import { EmotionsCategory } from '../../state/emotions/emotions.state';
 
 @Injectable({
   providedIn: 'root',
@@ -17,6 +19,10 @@ export class EmotionsService {
   setEmotions(): void {
     const emotions = EMOTIONS.map((emotion) => new EmotionsModel(emotion));
     this.store.dispatch(new ChangeInactiveEmotions(emotions));
+  }
+
+  changeActiveCategory(activeCategory: EmotionsCategory): void {
+    this.store.dispatch(new ChangeActiveCategory(activeCategory));
   }
 
   updateActiveEmotion(emotion: EmotionsModel): void {

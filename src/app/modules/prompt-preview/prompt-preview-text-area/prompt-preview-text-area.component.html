@@ -5,7 +5,24 @@
     <mat-card-content>
         <form [formGroup]="promptPreview">
             <mat-form-field appearance="fill" class="prompt-text">
-                <textarea matInput formControlName="body"></textarea>
+                <mat-label>Tone Prompt</mat-label>
+                <textarea matInput formControlName="tone"></textarea>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="prompt-text">
+                <mat-label>Emotion Prompt</mat-label>
+                <textarea matInput formControlName="emotion"></textarea>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="prompt-text">
+                <mat-label>Persona Prompt</mat-label>
+                <textarea matInput formControlName="persona"></textarea>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="prompt-text">
+                <mat-label>Genre Prompt</mat-label>
+                <textarea matInput formControlName="genre"></textarea>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="prompt-text">
+                <mat-label>Topics Prompt</mat-label>
+                <textarea matInput formControlName="topic"></textarea>
             </mat-form-field>
         </form>
     </mat-card-content>

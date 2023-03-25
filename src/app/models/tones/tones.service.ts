@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngxs/store';
 import {
-  ChangeActiveTones,
   ChangeInactiveTones,
   UpdateActiveTones,
   UpdateInactiveTones,
+  ChangeActiveCategory,
 } from '../../state/tones/tones.actions';
 import { TonesModel } from './tones.model';
+import { TonesCategory } from '../../state/tones/tones.state';
 import { TONES } from '../../constants/tones.constants';
 
 @Injectable({
@@ -17,30 +18,18 @@ export class TonesService {
 
   setTones(): void {
     const tones = TONES.map((tone) => new TonesModel(tone));
-    console.log(tones);
     this.store.dispatch(new ChangeInactiveTones(tones));
   }
 
-  setActiveTones(tones: TonesModel[], tone: TonesModel): void {
-    const activeTones = [...tones, tone];
-    this.store.dispatch(new ChangeActiveTones(activeTones));
-  }
-
-  setInactiveTones(activeTones: TonesModel[], tone: TonesModel): void {
-    // remove tone from activeTones
-    const inactiveTones = activeTones.filter((activeTone) => {
-      return activeTone.id !== tone.id;
-    });
-    this.store.dispatch(new ChangeInactiveTones(inactiveTones));
+  changeActiveCategory(activeCategory: TonesCategory): void {
+    this.store.dispatch(new ChangeActiveCategory(activeCategory));
   }
 
   updateActiveTones(tone: TonesModel): void {
-    console.log(2, tone);
     this.store.dispatch(new UpdateActiveTones(tone));
   }
 
   updateInactiveTones(tone: TonesModel): void {
-    console.log(3, tone);
     this.store.dispatch(new UpdateInactiveTones(tone));
   }
 }

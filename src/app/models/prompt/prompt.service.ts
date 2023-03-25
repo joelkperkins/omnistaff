@@ -2,7 +2,10 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { PromptModel } from './prompt.model';
 import { TonesModel } from '../tones/tones.model';
-import { ChangeActivePrompt } from '../../state/prompt/prompt.actions';
+import {
+  ChangeActivePrompt,
+  ChangeTonePrompt,
+} from '../../state/prompt/prompt.actions';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +13,7 @@ import { ChangeActivePrompt } from '../../state/prompt/prompt.actions';
 export class PromptService {
   constructor(private store: Store) {}
 
-  generatePrompt(tones: TonesModel[], name: string): void {
+  setTonePromt(tones: TonesModel[], name: string): void {
     const toneIds = tones.map((tone) => tone.id);
     const toneBody = this.buildToneSentence(tones);
     const prompt = new PromptModel({
@@ -19,7 +22,7 @@ export class PromptService {
       name,
     });
 
-    this.store.dispatch(new ChangeActivePrompt(prompt));
+    this.store.dispatch(new ChangeTonePrompt(prompt));
   }
 
   buildToneSentence(tones: TonesModel[]): string {
