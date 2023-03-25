@@ -1,14 +1,66 @@
-<div class="d-flex justify-content-end align-items-center">
+<div class="d-flex justify-content-end align-items-center"  *ngIf="descriptionType$ | async as type">
+  <ng-template [ngIf]="type === TONES">
     <mat-list>
-        <div *ngFor="let item of tonesByCategory">
-            <div mat-subheader>{{item.key}}</div>
-            <mat-list-item *ngFor="let data of item.data" class="d-flex align-items-center">
-              <div mat-line>{{data.name}}</div>
-              <button mat-icon-button (click)="setInactive(data)">
-                <mat-icon class="small" color="warn">backspace</mat-icon>
-              </button>
-            </mat-list-item>
-            <mat-divider></mat-divider>
-        </div>
+      <div *ngFor="let item of tonesByCategory">
+          <div mat-subheader>{{item.key}}</div>
+          <mat-list-item *ngFor="let data of item.data" class="d-flex align-items-center">
+            <div mat-line>{{data.name}}</div>
+            <button mat-icon-button (click)="setInactiveTone(data)">
+              <mat-icon class="small" color="warn">backspace</mat-icon>
+            </button>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+      </div>
     </mat-list>
+  </ng-template>
+  <ng-template [ngIf]="type === EMOTIONS">
+    <mat-list>
+      <div *ngFor="let item of emotionsByCategory">
+          <div mat-subheader>{{item.key}}</div>
+          <mat-list-item *ngFor="let data of item.data" class="d-flex align-items-center">
+            <div mat-line>{{data.name}}</div>
+            <button mat-icon-button (click)="setInactiveEmotion(data)">
+              <mat-icon class="small" color="warn">backspace</mat-icon>
+            </button>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+      </div>
+    </mat-list>
+  </ng-template>
+  <ng-template [ngIf]="type === PERSONAS">
+    <mat-list>
+      <div *ngFor="let item of personasByCategory">
+          <div mat-subheader>{{item.key}}</div>
+          <mat-list-item *ngFor="let data of item.data" class="d-flex align-items-center">
+            <div mat-line>{{data.name}}</div>
+            <button mat-icon-button (click)="setInactivePersona(data)">
+              <mat-icon class="small" color="warn">backspace</mat-icon>
+            </button>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+      </div>
+    </mat-list>
+  </ng-template>
+  <ng-template [ngIf]="type === GENRES">
+    <mat-list>
+        <mat-list-item *ngFor="let data of genres" class="d-flex align-items-center">
+          <div mat-line>{{data.name}}</div>
+          <button mat-icon-button (click)="setInactiveGenre(data)">
+            <mat-icon class="small" color="warn">backspace</mat-icon>
+          </button>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+    </mat-list>
+  </ng-template>
+  <ng-template [ngIf]="type === TOPICS">
+    <mat-list>
+        <mat-list-item *ngFor="let data of topics" class="d-flex align-items-center">
+          <div mat-line>{{data.name}}</div>
+          <button mat-icon-button (click)="setInactiveTopic(data)">
+            <mat-icon class="small" color="warn">backspace</mat-icon>
+          </button>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+    </mat-list>
+  </ng-template>
 </div>
