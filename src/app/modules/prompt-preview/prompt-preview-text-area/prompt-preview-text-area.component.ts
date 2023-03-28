@@ -24,6 +24,11 @@ import { ChangeGenrePrompt } from '../../../state/prompt/prompt.actions';
 import { ChangeTopicPrompt } from '../../../state/prompt/prompt.actions';
 
 import { PromptService } from '../../../models/prompt/prompt.service';
+import { TonesService } from '../../../models/tones/tones.service';
+import { EmotionsService } from '../../../models/emotions/emotions.service';
+import { PersonasService } from '../../../models/personas/personas.service';
+import { GenresService } from '../../../models/genres/genres.service';
+import { TopicsService } from '../../../models/topics/topics.service';
 
 @Component({
   selector: 'app-prompt-preview-text-area',
@@ -71,7 +76,15 @@ export class PromptPreviewTextAreaComponent implements OnInit, OnDestroy {
     topic: new FormControl({ value: null, disabled: false }, []),
   });
 
-  constructor(private store: Store, private promptService: PromptService) {}
+  constructor(
+    private store: Store,
+    private promptService: PromptService,
+    private tonesService: TonesService,
+    private emotionsService: EmotionsService,
+    private personasService: PersonasService,
+    private genresService: GenresService,
+    private topicsService: TopicsService
+  ) {}
 
   ngOnInit(): void {
     const sub1$ = combineLatest([
@@ -196,5 +209,27 @@ export class PromptPreviewTextAreaComponent implements OnInit, OnDestroy {
 
   watchToneChanges(): void {
     this.promptPreview.controls.tone.valueChanges.subscribe((value) => {});
+  }
+
+  updateInactive(descriptor: any): void {
+    switch (descriptor.category) {
+      case 'TONE':
+        this.tonesService.updateInactiveTones(descriptor);
+        break;
+      case 'EMOTION':
+        this.emotionsService.updateInactiveEmotions(descriptor);
+        break;
+      case 'PERSONA':
+        this.personasService.updateInactivePersonas(descriptor);
+        break;
+      case 'GENRE':
+        this.genresService.updateInactiveGenres(descriptor);
+        break;
+      case 'TOPIC':
+        this.topicsService.updateInactiveTopics(descriptor);
+        break;
+      default:
+        throw new Error('Invalid descriptor category');
+    }
   }
 }

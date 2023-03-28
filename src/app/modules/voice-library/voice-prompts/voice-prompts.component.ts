@@ -47,6 +47,8 @@ export class VoicePromptsComponent implements OnInit {
 
   promptList: PromptModel[] = [];
   descriptionRef: any = {};
+  activeDescriptorsRef: any = {};
+  activeDescriptorsKeys: any = [];
 
   constructor(
     private prompt: PromptService,
@@ -83,9 +85,13 @@ export class VoicePromptsComponent implements OnInit {
         genres.length === 0 &&
         topics.length === 0
       ) {
+        this.activeDescriptorsRef = {};
+        this.activeDescriptorsKeys = [];
         this.promptList = this.prompt.getPrompts();
         return;
       }
+
+      console.log('tones', tones);
 
       // build ref of active descriptors
       const descriptors: any = [
@@ -97,7 +103,7 @@ export class VoicePromptsComponent implements OnInit {
       ].reduce(
         (acc: any, curr: any) => {
           curr.forEach((item: any) => {
-            acc[item.id] = item.name;
+            acc[item.id] = item;
             acc.count++;
           });
           return acc;
@@ -122,8 +128,6 @@ export class VoicePromptsComponent implements OnInit {
             count++;
           }
         });
-        console.log('count', count);
-        console.log('goal', goal);
 
         // if all descriptors match, return prompt
         if (count === goal) {
@@ -131,6 +135,10 @@ export class VoicePromptsComponent implements OnInit {
         }
       });
 
+      delete descriptors.count;
+      this.activeDescriptorsRef = descriptors;
+      this.activeDescriptorsKeys = Object.keys(descriptors);
+      console.log('activeDescriptorsKeys', this.activeDescriptorsKeys);
       this.promptList = filteredPrompts;
       console.log('filteredPrompts', filteredPrompts);
       return filteredPrompts;

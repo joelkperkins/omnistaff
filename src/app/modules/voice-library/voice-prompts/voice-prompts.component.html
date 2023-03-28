@@ -1,5 +1,13 @@
 <mat-card class="row">
     <h1>Prompt Library</h1>
+    <mat-chip-list class="mt-3 d-flex flex-wrap">
+        <div *ngFor="let key of activeDescriptorsKeys">
+            <mat-chip color="accent" selectable="false">
+                {{activeDescriptorsRef[key].name}}
+                <mat-icon matChipRemove (click)="updateInactive(activeDescriptorsRef[key])">cancel</mat-icon>
+            </mat-chip>
+        </div>
+    </mat-chip-list>
     <div class="col-12 mb-5 d-flex flex-column justify-content-center align-items-start" *ngFor="let prompt of promptList">
         <div class="d-flex align-items-center">
             <strong>{{prompt.name}}</strong>
