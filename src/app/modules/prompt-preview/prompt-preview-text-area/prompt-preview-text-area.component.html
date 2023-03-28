@@ -4,22 +4,62 @@
     </mat-card-header>
     <mat-card-content>
         <form [formGroup]="promptPreview">
+            <mat-chip-list class="my-3 d-flex flex-wrap" *ngIf="activeTones$ | async as tones">
+                <div *ngFor="let tone of tones">
+                    <mat-chip color="accent" selectable="false">
+                        {{tone.name}}
+                        <mat-icon matChipRemove (click)="updateInactive(tone)">cancel</mat-icon>
+                    </mat-chip>
+                </div>
+            </mat-chip-list>
             <mat-form-field appearance="fill" class="prompt-text" color="accent">
                 <mat-label>Tone Prompt</mat-label>
                 <textarea matInput formControlName="tone" readonly></textarea>
             </mat-form-field>
+            <mat-chip-list class="my-3 d-flex flex-wrap" *ngIf="activeEmotions$ | async as emotions">
+                <div *ngFor="let emotion of emotions">
+                    <mat-chip color="accent" selectable="false">
+                        {{emotion.name}}
+                        <mat-icon matChipRemove (click)="updateInactive(emotion)">cancel</mat-icon>
+                    </mat-chip>
+                </div>
+            </mat-chip-list>
             <mat-form-field appearance="fill" class="prompt-text" color="accent">
                 <mat-label>Emotion Prompt</mat-label>
                 <textarea matInput formControlName="emotion" readonly></textarea>
             </mat-form-field>
+            <mat-chip-list class="my-3 d-flex flex-wrap" *ngIf="activePersonas$ | async as personas">
+                <div *ngFor="let persona of personas">
+                    <mat-chip color="accent" selectable="false">
+                        {{persona.name}}
+                        <mat-icon matChipRemove (click)="updateInactive(persona)">cancel</mat-icon>
+                    </mat-chip>
+                </div>
+            </mat-chip-list>
             <mat-form-field appearance="fill" class="prompt-text" color="accent">
                 <mat-label>Persona Prompt</mat-label>
                 <textarea matInput formControlName="persona" readonly></textarea>
             </mat-form-field>
+            <mat-chip-list class="my-3 d-flex flex-wrap" *ngIf="activeGenres$ | async as genres">
+                <div *ngFor="let genre of genres">
+                    <mat-chip color="accent" selectable="false">
+                        {{genre.name}}
+                        <mat-icon matChipRemove (click)="updateInactive(genre)">cancel</mat-icon>
+                    </mat-chip>
+                </div>
+            </mat-chip-list>
             <mat-form-field appearance="fill" class="prompt-text" color="accent">
                 <mat-label>Genre Prompt</mat-label>
                 <textarea matInput formControlName="genre" readonly></textarea>
             </mat-form-field>
+            <mat-chip-list class="my-3 d-flex flex-wrap" *ngIf="activeTopics$ | async as topics">
+                <div *ngFor="let topic of topics">
+                    <mat-chip color="accent" selectable="false">
+                        {{topic.name}}
+                        <mat-icon matChipRemove (click)="updateInactive(topic)">cancel</mat-icon>
+                    </mat-chip>
+                </div>
+            </mat-chip-list>
             <mat-form-field appearance="fill" class="prompt-text" color="accent">
                 <mat-label>Topics Prompt</mat-label>
                 <textarea matInput formControlName="topic" readonly></textarea>
