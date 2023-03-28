@@ -37,8 +37,8 @@ export class TopicsComponent implements OnInit, OnDestroy {
     ]).subscribe((items: any) => {
       const topics: TopicsModel[] = items[0];
       const activeTopics: TopicsModel[] = items[1];
-      this.topics = topics;
-      this.activeTopics = activeTopics;
+      this.topics = topics.filter((topic) => topic);
+      this.activeTopics = activeTopics.filter((topic) => topic);
     });
     this.subscription.add(sub$);
   }

@@ -1,4 +1,7 @@
-<div class="row" *ngIf="descriptionType$ | async as type">
+<div class="row mt-3" *ngIf="descriptionType$ | async as type">
+    <div class="col-2">
+        <app-description-type-selector></app-description-type-selector>
+    </div>
     <ng-template [ngIf]="type === TONES">
         <app-tones></app-tones>
     </ng-template>

@@ -140,4 +140,14 @@ export class PromptState {
       genrePrompt: action.prompt,
     });
   }
+
+  @Action(ChangeTopicPrompt)
+  changeTopicPrompt(
+    ctx: StateContext<IPromptState>,
+    action: ChangeTopicPrompt
+  ): void {
+    ctx.patchState({
+      topicPrompt: action.prompt,
+    });
+  }
 }

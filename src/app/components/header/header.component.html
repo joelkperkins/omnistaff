@@ -1,6 +1,20 @@
-<mat-toolbar>
-   <span>sumvara</span>
-   <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-    <mat-icon>share</mat-icon>
-  </button> -->
+<mat-toolbar class="row no-gutter m-0">
+    <div class="col-1">
+      <span>SVMVAMRA</span>
+    </div>
+    <div class="col d-flex">
+  
+      <div class="col-1">
+        <button mat-button (click)="navigate('dashboard')">
+            voice builder
+        </button>
+       </div>
+  
+      <div class="col-1">
+        <button mat-button (click)="navigate('library')">
+            voice library
+        </button>
+      </div>
+  
+    </div>
  </mat-toolbar>

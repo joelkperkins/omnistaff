@@ -98,7 +98,7 @@ export class EmotionsComponent implements OnInit, OnDestroy {
   }
 
   setActive(tone: EmotionsModel): void {
-    this.emotionsService.updateActiveEmotion(tone);
+    this.emotionsService.updateActiveEmotions(tone);
   }
 
   setInactive(tone: EmotionsModel): void {

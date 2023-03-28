@@ -15,6 +15,13 @@ const routes: Routes = [
         (m) => m.DashboardModule
       ),
   },
+  {
+    path: 'library',
+    loadChildren: () =>
+      import('./modules/voice-library/voice-library.module').then(
+        (m) => m.VoiceLibraryModule
+      ),
+  },
 ];
 
 @NgModule({

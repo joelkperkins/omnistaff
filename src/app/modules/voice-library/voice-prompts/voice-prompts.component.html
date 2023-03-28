@@ -1,0 +1,15 @@
+<mat-card class="row">
+    <h1>Prompt Library</h1>
+    <div class="col-12 mb-5 d-flex flex-column justify-content-center align-items-start" *ngFor="let prompt of promptList">
+        <h4>{{prompt.name}}</h4>
+        <textarea matInput>{{prompt.body}}</textarea>
+        <mat-chip-list class="mt-3 d-flex flex-wrap">
+            <div *ngFor="let desc of prompt.descriptors">
+                <mat-chip *ngIf="descriptionRef[desc]" color="accent" selectable="false" (click)="updateActive(descriptionRef[desc])">
+                    {{descriptionRef[desc].name}}
+                    <mat-icon matChipRemove (click)="updateInactive(descriptionRef[desc])">cancel</mat-icon>
+                </mat-chip>
+            </div>
+        </mat-chip-list>
+    </div>
+</mat-card>

@@ -1,3 +1,30 @@
 <div class="row">
     <app-prompt-preview-text-area></app-prompt-preview-text-area>
 </div>
+<ng-template [ngIf]="showName === true" [ngIfElse]="showPrompt">
+    <div class="mt-5 row justify-content-start align-items-center">
+        <form [formGroup]="form">
+            <div class="col d-flex flex-column">
+                <div class="d-flex justify-content-start">
+                    <mat-form-field appearance="fill" color="accent" style.color="white">
+                        <mat-label>Name This Voice</mat-label>
+                        <input matInput formControlName="promptName"/>
+                    </mat-form-field>
+                </div>
+                <div class="d-flex justify-content-start">
+                    <mat-checkbox class="example-margin" formControlName="showName" color="accent" style.color="white">
+                        <span style.color="white">I consent to Sumvara studying my anonymous prompt data.</span>
+                    </mat-checkbox>
+                </div>
+                <div class="d-flex justify-content-start">
+                    <button mat-raised-button color="accent" (click)="generatePrompt()">Save Voice</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</ng-template>
+<ng-template #showPrompt>
+    <div class="row">
+        <app-active-prompt></app-active-prompt>
+    </div>
+</ng-template>

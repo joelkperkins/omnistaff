@@ -25,7 +25,7 @@ export class EmotionsService {
     this.store.dispatch(new ChangeActiveCategory(activeCategory));
   }
 
-  updateActiveEmotion(emotion: EmotionsModel): void {
+  updateActiveEmotions(emotion: EmotionsModel): void {
     this.store.dispatch(new UpdateActiveEmotions(emotion));
   }
 

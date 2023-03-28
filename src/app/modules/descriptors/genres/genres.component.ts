@@ -37,8 +37,8 @@ export class GenresComponent implements OnInit, OnDestroy {
     ]).subscribe((items: any) => {
       const genres: GenresModel[] = items[0];
       const activeGenres: GenresModel[] = items[1];
-      this.genres = genres;
-      this.activeGenres = activeGenres;
+      this.genres = genres.filter((genre) => genre);
+      this.activeGenres = activeGenres.filter((genre) => genre);
     });
     this.subscription.add(sub$);
   }

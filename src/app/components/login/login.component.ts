@@ -19,7 +19,9 @@ export class LoginComponent implements OnInit {
 
   constructor(private store: Store) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.store.dispatch(new ChangeStatus(AuthStatus.AUTH_COMPLETE));
+  }
 
   login(): void {
     this.store.dispatch(new ChangeStatus(AuthStatus.AUTH_COMPLETE));

@@ -1,0 +1,11 @@
+<mat-radio-group *ngIf="descriptionType$ | async as type" aria-label="Select an option" class="selection-container">
+    <mat-radio-button
+        class="radio-item"
+        *ngFor="let item of descriptionTypes"
+        [checked]="item.value === type"
+        [value]="item.value"
+        (change)="changeType(item.value)"
+    >
+        {{item.name}}
+    </mat-radio-button>
+</mat-radio-group>

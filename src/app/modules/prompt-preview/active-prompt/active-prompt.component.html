@@ -1,0 +1,27 @@
+<mat-card class="prompt-preview">
+    <mat-card-header>
+        <h2>Prompt Output</h2>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="form">
+            <mat-form-field appearance="outline"  class="prompt-text" color="accent">
+                <mat-label>Promt Name</mat-label>
+                <input matInput formControlName="promptName"/>
+            </mat-form-field>
+            <mat-form-field appearance="outline"  class="prompt-text" color="accent">
+                <mat-label>Prompt Body</mat-label>
+                <textarea matInput formControlName="promptBody"></textarea>
+            </mat-form-field>
+        </form>
+    </mat-card-content>
+    <mat-card-actions>
+        <div class="row">
+            <div class="col d-flex">
+                <button mat-raised-button color="primary" (click)="clearPrompt()">Clear Prompt</button>
+            </div>
+            <div class="col d-flex justify-content-end">
+                <button mat-raised-button color="accent" (click)="updatePrompt()">Update Prompt</button>
+            </div>
+        </div>
+    </mat-card-actions>
+</mat-card>

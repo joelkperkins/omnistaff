@@ -5,3 +5,11 @@
 .prompt-text {
     width: 44vw;
 }
+
+::ng-deep .mat-form-field-appearance-fill .mat-input-element {
+  color: white;
+}
+
+::ng-deep .mat-checkbox {
+  color: white;
+}
