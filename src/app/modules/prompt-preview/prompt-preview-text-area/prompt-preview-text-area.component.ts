@@ -124,7 +124,6 @@ export class PromptPreviewTextAreaComponent implements OnInit, OnDestroy {
             genre: null,
           });
         }
-        console.log(topicPrompt);
         if (topicPrompt) {
           this.promptPreview.patchValue({
             topic: topicPrompt.body,

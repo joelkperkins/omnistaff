@@ -11,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatCardModule,
     MatInputModule,
     MatCheckboxModule,
+    MatChipsModule,
   ],
   exports: [PromptPreviewIndexComponent],
 })

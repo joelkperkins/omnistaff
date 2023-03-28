@@ -6,12 +6,6 @@ export const TONES = [
     category: 'TONE',
   },
   {
-    id: 12,
-    name: 'Professional',
-    type: 'Professionalism',
-    category: 'TONE',
-  },
-  {
     id: 14,
     name: 'Authoritative',
     type: 'Professionalism',

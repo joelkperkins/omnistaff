@@ -94,12 +94,18 @@ export class VoicePromptsComponent implements OnInit {
         personas,
         genres,
         topics,
-      ].reduce((acc: any, curr: any) => {
-        curr.forEach((item: any) => {
-          acc[item.id] = item.name;
-        });
-        return acc;
-      }, {});
+      ].reduce(
+        (acc: any, curr: any) => {
+          curr.forEach((item: any) => {
+            acc[item.id] = item.name;
+            acc.count++;
+          });
+          return acc;
+        },
+        {
+          count: 0,
+        }
+      );
 
       // get prompts from local storage
       const prompts = this.prompt.getPrompts();
@@ -107,14 +113,22 @@ export class VoicePromptsComponent implements OnInit {
       // filters prompts for those that include an active descriptor
       const filteredPrompts = prompts.filter((prompt) => {
         const descriptorsArray = prompt.descriptors;
+        const goal = descriptors.count;
 
-        return descriptorsArray.reduce((acc: any, curr: any) => {
-          if (descriptors[curr]) {
-            return true;
-          } else {
-            return acc;
+        // count number of prompt descriptors that match active descriptors
+        let count = 0;
+        descriptorsArray.forEach((descriptor: any) => {
+          if (descriptors[descriptor]) {
+            count++;
           }
-        }, false);
+        });
+        console.log('count', count);
+        console.log('goal', goal);
+
+        // if all descriptors match, return prompt
+        if (count === goal) {
+          return prompt;
+        }
       });
 
       this.promptList = filteredPrompts;
