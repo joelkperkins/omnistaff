@@ -6,6 +6,7 @@ import {
   ChangeInactiveTopics,
   UpdateActiveTopics,
   UpdateInactiveTopics,
+  ResetTopics,
 } from './topics.actions';
 
 interface ITopicsState {
@@ -79,6 +80,14 @@ export class TopicsState {
     patchState({
       activeTopics: newActiveTopics,
       inactiveTopics: newInactiveTopics,
+    });
+  }
+
+  @Action(ResetTopics)
+  resetTopics(ctx: StateContext<ITopicsState>): void {
+    ctx.patchState({
+      activeTopics: [],
+      inactiveTopics: [],
     });
   }
 }

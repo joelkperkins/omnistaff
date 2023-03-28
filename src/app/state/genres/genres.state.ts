@@ -6,6 +6,7 @@ import {
   ChangeInactiveGenres,
   UpdateActiveGenres,
   UpdateInactiveGenres,
+  ResetGenres,
 } from './genres.actions';
 
 interface IGenresState {
@@ -79,6 +80,14 @@ export class GenresState {
     patchState({
       activeGenres: newActiveGenres,
       inactiveGenres: newInactiveGenres,
+    });
+  }
+
+  @Action(ResetGenres)
+  resetGenres({ patchState }: StateContext<IGenresState>): void {
+    patchState({
+      activeGenres: [],
+      inactiveGenres: [],
     });
   }
 }

@@ -8,6 +8,8 @@ import { PromptPreviewModule } from '../prompt-preview/prompt-preview.module';
 
 import { DescriptorsModule } from '../descriptors/descriptors.module';
 
+import { MatButtonModule } from '@angular/material/button';
+
 @NgModule({
   declarations: [DashboardIndexComponent],
   imports: [
@@ -15,6 +17,7 @@ import { DescriptorsModule } from '../descriptors/descriptors.module';
     DashboardRoutingModule,
     DescriptorsModule,
     PromptPreviewModule,
+    MatButtonModule,
   ],
 })
 export class DashboardModule {}

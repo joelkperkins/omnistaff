@@ -3,6 +3,10 @@ import { EmotionsCategory } from './emotions.state';
 
 const category = 'EMOTIONS';
 
+export class ResetEmotions {
+  static readonly type = `[${category}] ResetActiveEmotions`;
+}
+
 export class ChangeInactiveEmotions {
   static readonly type = `[${category}] ChangeInactiveEmotions`;
   constructor(public emotions: EmotionsModel[]) {}

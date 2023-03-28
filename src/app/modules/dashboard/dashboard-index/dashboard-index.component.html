@@ -1,6 +1,11 @@
 <div class="container-fluid no-scroll">
     <div class="row">
         <div class="col-6">
+            <div class="col-12 d-flex justify-content-end">
+                <button class="my-2" mat-button color="warn" (click)="reset()">
+                    Reset Prompt Input
+                </button>
+            </div>
             <app-descriptors-index></app-descriptors-index>
         </div>
         <div class="col">

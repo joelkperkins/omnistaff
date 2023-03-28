@@ -2,6 +2,10 @@ import { TopicsModel } from '../../models/topics/topics.model';
 
 const category = 'TOPICS';
 
+export class ResetTopics {
+  static readonly type = `[${category}] ResetActiveTopics`;
+}
+
 export class ChangeInactiveTopics {
   static readonly type = `[${category}] ChangeInactiveTopics`;
   constructor(public topics: TopicsModel[]) {}

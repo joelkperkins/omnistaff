@@ -3,6 +3,10 @@ import { TonesCategory } from './tones.state';
 
 const category = 'TONES';
 
+export class ResetTones {
+  static readonly type = `[${category}] ResetActiveTones`;
+}
+
 export class ChangeInactiveTones {
   static readonly type = `[${category}] ChangeInactiveTones`;
   constructor(public tones: TonesModel[]) {}

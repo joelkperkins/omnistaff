@@ -7,6 +7,7 @@ import {
   UpdateActiveEmotions,
   UpdateInactiveEmotions,
   ChangeInactiveEmotions,
+  ResetEmotions,
 } from './emotions.actions';
 
 export enum EmotionsCategory {
@@ -116,5 +117,13 @@ export class EmotionsState {
         inactiveEmotions,
       });
     }
+  }
+
+  @Action(ResetEmotions)
+  resetEmotions(ctx: StateContext<IEmotionsState>): void {
+    ctx.patchState({
+      activeEmotions: [],
+      inactiveEmotions: [],
+    });
   }
 }

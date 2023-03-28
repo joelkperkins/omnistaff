@@ -7,6 +7,7 @@ import {
   UpdateActivePersonas,
   UpdateInactivePersonas,
   ChangeActiveCategory,
+  ResetPersonas,
 } from './personas.actions';
 
 export enum PersonasCategory {
@@ -104,6 +105,14 @@ export class PersonasState {
     patchState({
       activePersonas: newActivePersonas,
       inactivePersonas: newInactivePersonas,
+    });
+  }
+
+  @Action(ResetPersonas)
+  resetPersonas(ctx: StateContext<IPersonasState>): void {
+    ctx.patchState({
+      activePersonas: [],
+      inactivePersonas: [],
     });
   }
 }

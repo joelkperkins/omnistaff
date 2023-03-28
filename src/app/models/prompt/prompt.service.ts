@@ -12,11 +12,30 @@ import {
   ChangeTopicPrompt,
 } from '../../state/prompt/prompt.actions';
 
+import { TonesService } from '../tones/tones.service';
+import { ResetTones } from '../../state/tones/tones.actions';
+import { EmotionsService } from '../emotions/emotions.service';
+import { ResetEmotions } from '../../state/emotions/emotions.actions';
+import { PersonasService } from '../personas/personas.service';
+import { ResetPersonas } from '../../state/personas/personas.actions';
+import { GenresService } from '../genres/genres.service';
+import { ResetGenres } from '../../state/genres/genres.actions';
+import { TopicsService } from '../topics/topics.service';
+import { ResetTopics } from '../../state/topics/topics.actions';
+
 @Injectable({
   providedIn: 'root',
 })
 export class PromptService {
-  constructor(private store: Store, private local: LocalStorageService) {}
+  constructor(
+    private store: Store,
+    private local: LocalStorageService,
+    private tones: TonesService,
+    private emotions: EmotionsService,
+    private personas: PersonasService,
+    private genres: GenresService,
+    private topics: TopicsService
+  ) {}
 
   getPrompts(): PromptModel[] {
     return this.local.getPrompts();
@@ -38,10 +57,20 @@ export class PromptService {
   resetPromptInputs(): void {
     this.store.dispatch(new ChangeActivePrompt(null));
     this.store.dispatch(new ChangeTonePrompt(null));
+    this.store.dispatch(new ResetTones());
+    this.tones.setTones();
     this.store.dispatch(new ChangeEmotionPrompt(null));
+    this.store.dispatch(new ResetEmotions());
+    this.emotions.setEmotions();
     this.store.dispatch(new ChangePersonaPrompt(null));
+    this.store.dispatch(new ResetPersonas());
+    this.personas.setPersonas();
     this.store.dispatch(new ChangeGenrePrompt(null));
+    this.store.dispatch(new ResetGenres());
+    this.genres.setGenres();
     this.store.dispatch(new ChangeTopicPrompt(null));
+    this.store.dispatch(new ResetTopics());
+    this.topics.setTopics();
   }
 
   setTonePromt(tones: TonesModel[], name: string): void {

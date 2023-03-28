@@ -24,7 +24,7 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     const sub$ = this.status$.subscribe((status) => {
       if (status === AuthStatus.AUTH_COMPLETE) {
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/builder']);
       } else {
         this.router.navigate(['/login']);
       }

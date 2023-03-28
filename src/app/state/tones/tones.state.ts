@@ -6,6 +6,7 @@ import {
   ChangeActiveCategory,
   UpdateActiveTones,
   UpdateInactiveTones,
+  ResetTones,
 } from './tones.actions';
 
 export enum TonesCategory {
@@ -112,5 +113,15 @@ export class TonesState {
         inactiveTones,
       });
     }
+  }
+
+  @Action(ResetTones)
+  resetTones(ctx: StateContext<ITonesState>): void {
+    const activeTones: TonesModel[] = [];
+    const inactiveTones: TonesModel[] = [];
+    ctx.patchState({
+      activeTones,
+      inactiveTones,
+    });
   }
 }
