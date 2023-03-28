@@ -168,4 +168,9 @@ export class VoicePromptsComponent implements OnInit {
         throw new Error('Invalid descriptor category');
     }
   }
+
+  deletePrompt(promptId: number): void {
+    this.prompt.deletePrompt(promptId);
+    this.ngOnInit();
+  }
 }

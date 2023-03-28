@@ -1,7 +1,12 @@
 <mat-card class="row">
     <h1>Prompt Library</h1>
     <div class="col-12 mb-5 d-flex flex-column justify-content-center align-items-start" *ngFor="let prompt of promptList">
-        <h4>{{prompt.name}}</h4>
+        <div class="d-flex align-items-center">
+            <strong>{{prompt.name}}</strong>
+            <button mat-icon-button (click)="deletePrompt(prompt.id)">
+                <mat-icon class="small" color="warn">backspace</mat-icon>
+            </button>
+        </div>
         <textarea matInput>{{prompt.body}}</textarea>
         <mat-chip-list class="mt-3 d-flex flex-wrap">
             <div *ngFor="let desc of prompt.descriptors">

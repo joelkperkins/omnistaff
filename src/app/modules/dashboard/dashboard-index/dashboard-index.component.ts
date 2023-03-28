@@ -13,6 +13,8 @@ import { PersonasService } from '../../../models/personas/personas.service';
 import { GenresService } from '../../../models/genres/genres.service';
 import { TopicsService } from '../../../models/topics/topics.service';
 
+import { PromptService } from '../../../models/prompt/prompt.service';
+
 @Component({
   selector: 'app-dashboard-index',
   templateUrl: './dashboard-index.component.html',
@@ -25,10 +27,12 @@ export class DashboardIndexComponent implements OnInit {
     private emotions: EmotionsService,
     private personas: PersonasService,
     private genres: GenresService,
-    private topics: TopicsService
+    private topics: TopicsService,
+    private prompt: PromptService
   ) {}
 
   ngOnInit(): void {
+    this.prompt.resetPromptInputs();
     this.tones.setTones();
     this.emotions.setEmotions();
     this.personas.setPersonas();

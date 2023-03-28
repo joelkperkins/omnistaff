@@ -11,6 +11,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [VoiceLibraryIndexComponent, VoicePromptsComponent],
@@ -22,6 +23,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatChipsModule,
     MatInputModule,
     MatIconModule,
+    MatButtonModule,
   ],
 })
 export class VoiceLibraryModule {}

@@ -40,4 +40,13 @@ export class LocalStorageService {
       return promptsData[id];
     }
   }
+
+  deletePrompt(id: number): void {
+    const prompts = localStorage.getItem('prompts');
+    if (prompts) {
+      const promptsData = JSON.parse(prompts);
+      delete promptsData[id];
+      localStorage.setItem('prompts', JSON.stringify(promptsData));
+    }
+  }
 }

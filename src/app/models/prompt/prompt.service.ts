@@ -31,6 +31,10 @@ export class PromptService {
     this.local.savePrompt(prompt);
   }
 
+  deletePrompt(id: number): void {
+    this.local.deletePrompt(id);
+  }
+
   resetPromptInputs(): void {
     this.store.dispatch(new ChangeActivePrompt(null));
     this.store.dispatch(new ChangeTonePrompt(null));
